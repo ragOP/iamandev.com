@@ -1,0 +1,272 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    /* Travel-inspired palette - sunset coral meets ocean teal */
+    --background: 30 25% 98%;
+    --foreground: 220 30% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 8%;
+
+    /* Sunset coral primary */
+    --primary: 12 80% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 20 90% 65%;
+
+    /* Deep ocean secondary */
+    --secondary: 200 80% 20%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 30 20% 94%;
+    --muted-foreground: 220 15% 45%;
+
+    /* Teal accent */
+    --accent: 175 60% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 15% 90%;
+    --input: 30 15% 90%;
+    --ring: 12 80% 55%;
+
+    --radius: 1rem;
+
+    /* Custom gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(12, 80%, 55%) 0%, hsl(35, 90%, 55%) 100%);
+    --gradient-sunset: linear-gradient(135deg, hsl(350, 80%, 60%) 0%, hsl(25, 95%, 55%) 50%, hsl(45, 100%, 55%) 100%);
+    --gradient-ocean: linear-gradient(135deg, hsl(200, 80%, 20%) 0%, hsl(175, 60%, 35%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(30, 25%, 98%) 0%, hsl(25, 30%, 95%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(220, 30%, 8%) 0%, hsl(200, 80%, 12%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px -2px hsl(220 30% 8% / 0.08);
+    --shadow-md: 0 8px 24px -8px hsl(220 30% 8% / 0.12);
+    --shadow-lg: 0 20px 50px -15px hsl(220 30% 8% / 0.18);
+    --shadow-glow: 0 0 50px -10px hsl(12 80% 55% / 0.4);
+    --shadow-card: 0 4px 24px -4px hsl(220 30% 8% / 0.1);
+
+    /* Sidebar */
+    --sidebar-background: 30 25% 96%;
+    --sidebar-foreground: 220 30% 8%;
+    --sidebar-primary: 12 80% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 30 20% 94%;
+    --sidebar-accent-foreground: 220 30% 8%;
+    --sidebar-border: 30 15% 90%;
+    --sidebar-ring: 12 80% 55%;
+  }
+
+  .dark {
+    --background: 220 30% 6%;
+    --foreground: 30 25% 98%;
+
+    --card: 220 28% 10%;
+    --card-foreground: 30 25% 98%;
+
+    --popover: 220 28% 10%;
+    --popover-foreground: 30 25% 98%;
+
+    --primary: 12 80% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 20 90% 65%;
+
+    --secondary: 175 60% 45%;
+    --secondary-foreground: 220 30% 8%;
+
+    --muted: 220 25% 14%;
+    --muted-foreground: 30 15% 60%;
+
+    --accent: 175 60% 45%;
+    --accent-foreground: 220 30% 8%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 25% 16%;
+    --input: 220 25% 16%;
+    --ring: 12 80% 55%;
+
+    --sidebar-background: 220 28% 8%;
+    --sidebar-foreground: 30 25% 98%;
+    --sidebar-primary: 12 80% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 25% 14%;
+    --sidebar-accent-foreground: 30 25% 98%;
+    --sidebar-border: 220 25% 16%;
+    --sidebar-ring: 12 80% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .text-gradient-sunset {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-sunset);
+  }
+
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+
+  .bg-gradient-sunset {
+    background-image: var(--gradient-sunset);
+  }
+
+  .bg-gradient-ocean {
+    background-image: var(--gradient-ocean);
+  }
+
+  .bg-gradient-hero {
+    background-image: var(--gradient-hero);
+  }
+
+  .bg-gradient-dark {
+    background-image: var(--gradient-dark);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Animated underline for links */
+  .animated-underline {
+    @apply relative;
+  }
+  
+  .animated-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 origin-right transition-transform duration-300;
+  }
+  
+  .animated-underline:hover::after {
+    @apply scale-x-100 origin-left;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-background/80 backdrop-blur-xl border border-border/50;
+  }
+
+  /* Story card style */
+  .story-card {
+    @apply relative overflow-hidden rounded-2xl transition-all duration-500;
+  }
+
+  .story-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10;
+  }
+
+  /* Scrolling feed effect */
+  .feed-scroll {
+    scroll-snap-type: y mandatory;
+  }
+
+  .feed-item {
+    scroll-snap-align: start;
+  }
+}
+
+@layer utilities {
+  /* Scroll reveal animations */
+  .reveal {
+    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+  }
+
+  .reveal.visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-2;
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Button press effect */
+  .press {
+    @apply transition-transform duration-150 active:scale-95;
+  }
+
+  /* Parallax-like subtle movement */
+  .float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+
+  .float-medium {
+    animation: float-medium 6s ease-in-out infinite;
+  }
+
+  .float-fast {
+    animation: float-fast 4s ease-in-out infinite;
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+  }
+
+  @keyframes float-medium {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(-1deg); }
+  }
+
+  @keyframes float-fast {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* Shimmer effect */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--primary) / 0.1) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}
