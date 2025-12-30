@@ -1,0 +1,1009 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Aman Dev — Resume / CV</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --paper:#ffffff;
+
+      /* Theme (match screenshot vibe) */
+      --mint:#bfe8e2;
+      --mint-2:#eaf7f5;
+
+      --accent:#2b7a78;
+      --accent-2:#78c7bf;
+
+      --sidebar:#f4fbfa;
+      --chip:#eef2f7;
+
+      --radius:20px;
+      --shadow: 0 18px 40px rgba(15, 23, 42, 0.10);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 800px at 10% 0%, rgba(120,199,191,.22), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(43,122,120,.14), transparent 55%),
+        linear-gradient(180deg, #f7fbfb, #f2f6f7);
+      padding:24px 14px;
+    }
+
+    /* Page (A4-ish) */
+    .page{
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--paper);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      border: 1px solid rgba(229,231,235,.8);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 340px 1fr;
+      min-height: 980px;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      background: linear-gradient(180deg, var(--sidebar), #ffffff);
+      padding: 26px 22px 26px;
+      border-right: 1px solid rgba(229,231,235,.8);
+      position: relative;
+    }
+
+    .photoWrap{
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      margin-top: 6px;
+      margin-bottom: 16px;
+    }
+
+    .photoRing{
+      width: 170px;
+      height: 170px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.95), rgba(255,255,255,.55) 40%, rgba(255,255,255,.2) 70%),
+        linear-gradient(180deg, rgba(120,199,191,.85), rgba(43,122,120,.55));
+      padding: 10px;
+      box-shadow: 0 12px 26px rgba(17,24,39,.14);
+    }
+
+    .photo{
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      object-fit: cover;
+      display:block;
+      background:#e5e7eb;
+    }
+
+    .sideTitle{
+      font-weight: 800;
+      font-size: 20px;
+      text-align:center;
+      margin: 4px 0 2px;
+      letter-spacing: .2px;
+    }
+    .sideRole{
+      text-align:center;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 12.5px;
+      margin: 0 0 18px;
+    }
+
+    .sideSection{
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(229,231,235,.8);
+    }
+
+    .sideSection h3{
+      margin:0 0 10px;
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #334155;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .sideSection h3:after{
+      content:"";
+      height: 1px;
+      background: rgba(203,213,225,.75);
+      flex: 1;
+    }
+
+    .contactList{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .contactItem{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color: #0f172a;
+      font-size: 12.8px;
+    }
+    .icon{
+      width: 22px;
+      height: 22px;
+      border-radius: 8px;
+      background: rgba(120,199,191,.22);
+      display:grid;
+      place-items:center;
+      flex: 0 0 22px;
+      border: 1px solid rgba(120,199,191,.25);
+    }
+    .icon svg{width:14px;height:14px;opacity:.9}
+    .contactItem span{color:var(--muted)}
+    .contactItem a{color:inherit;text-decoration:none}
+    .contactItem a:hover{color:var(--accent);text-decoration:underline}
+
+    .bullets{
+      margin: 10px 0 0;
+      padding: 0 0 0 16px;
+      color:#0f172a;
+      font-size: 12.8px;
+      line-height: 1.55;
+    }
+    .bullets li{margin: 6px 0}
+    .bullets li span{color:var(--muted)}
+
+    .tagGrid{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top: 10px;
+    }
+    .tag{
+      font-size: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: var(--chip);
+      border: 1px solid rgba(226,232,240,.9);
+      color:#0f172a;
+      font-weight:600;
+    }
+
+    .langRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-top: 10px;
+      font-size: 12.8px;
+      color:#0f172a;
+    }
+    .dots{
+      display:flex;
+      gap:6px;
+    }
+    .dot{
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(100,116,139,.25);
+    }
+    .dot.on{background: rgba(43,122,120,.75)}
+
+    .smallNote{
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Main */
+    .main{
+      padding: 0;
+      background: linear-gradient(180deg, #ffffff, #ffffff);
+    }
+
+    .headerBar{
+      background: linear-gradient(90deg, var(--mint), var(--mint-2));
+      padding: 34px 30px 28px;
+      border-bottom: 1px solid rgba(229,231,235,.8);
+      position: relative;
+    }
+
+    .name{
+      margin:0;
+      font-size: 44px;
+      letter-spacing: .12em;
+      font-weight: 800;
+      line-height: 1.06;
+      color: #0b2b2a;
+      text-transform: uppercase;
+    }
+
+    .headline{
+      margin: 10px 0 0;
+      font-size: 13px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: rgba(11,43,42,.7);
+      font-weight: 700;
+    }
+
+    .mainInner{
+      padding: 22px 30px 30px;
+    }
+
+    .section{
+      position: relative;
+      padding-left: 56px;
+      margin-top: 18px;
+    }
+
+    .section:first-child{margin-top: 0}
+
+    .rail{
+      position:absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba(120,199,191,.55);
+      border-radius: 999px;
+    }
+
+    .badge{
+      position:absolute;
+      left: 9px;
+      top: 4px;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 2px solid rgba(120,199,191,.9);
+      display:grid;
+      place-items:center;
+      font-weight: 800;
+      color: rgba(11,43,42,.85);
+      font-size: 12px;
+      box-shadow: 0 8px 18px rgba(17,24,39,.08);
+    }
+
+    .secHeader{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom: 12px;
+    }
+
+    .secHeader h2{
+      margin:0;
+      font-size: 14px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color:#334155;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .secHeader .bar{
+      height: 8px;
+      flex: 1;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(120,199,191,.45), rgba(120,199,191,.05));
+      border: 1px solid rgba(120,199,191,.18);
+    }
+
+    .card{
+      background: #ffffff;
+      border: 1px solid rgba(226,232,240,.95);
+      border-radius: 16px;
+      padding: 14px 14px;
+      box-shadow: 0 10px 22px rgba(15,23,42,.06);
+    }
+
+    .lead{
+      margin: 0;
+      font-size: 13.5px;
+      color: #0f172a;
+      line-height: 1.65;
+    }
+
+    .lead strong{font-weight:800}
+
+    .twoCol{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .mini{
+      padding: 12px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(120,199,191,.16), rgba(120,199,191,.05));
+      border: 1px solid rgba(120,199,191,.18);
+    }
+
+    .mini .k{
+      font-size: 11px;
+      color: rgba(11,43,42,.72);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .mini .v{
+      font-size: 13px;
+      font-weight: 800;
+      color:#0b2b2a;
+    }
+
+    .list{
+      margin: 10px 0 0;
+      padding: 0 0 0 18px;
+      color:#0f172a;
+      font-size: 13.2px;
+      line-height: 1.62;
+    }
+    .list li{margin: 8px 0}
+    .list li span{color:var(--muted)}
+
+    .hookGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .hookBox{
+      border-radius: 16px;
+      border: 1px solid rgba(226,232,240,.95);
+      background: linear-gradient(180deg, #ffffff, #fbfdfd);
+      padding: 12px;
+      box-shadow: 0 10px 18px rgba(15,23,42,.06);
+    }
+
+    .hookTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom: 10px;
+    }
+
+    .hookTop .pill{
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(11,43,42,.72);
+    }
+
+    .hookTop .count{
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      background: rgba(120,199,191,.22);
+      border: 1px solid rgba(120,199,191,.25);
+      display:grid;
+      place-items:center;
+      font-weight: 900;
+      color: rgba(11,43,42,.85);
+      font-size: 12px;
+    }
+
+    .hook{
+      font-weight: 800;
+      font-size: 13.5px;
+      color: #0f172a;
+      margin: 0 0 6px;
+      line-height: 1.45;
+    }
+    .why{
+      margin:0;
+      color: var(--muted);
+      font-size: 12.6px;
+      line-height: 1.45;
+    }
+    .why b{color:#0f172a}
+
+    .timeline{
+      margin-top: 10px;
+      display:grid;
+      gap: 10px;
+    }
+
+    .step{
+      display:grid;
+      grid-template-columns: 44px 1fr;
+      gap: 10px;
+      align-items:start;
+      padding: 12px;
+      border: 1px solid rgba(226,232,240,.95);
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 10px 18px rgba(15,23,42,.05);
+    }
+
+    .stepNo{
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      font-weight: 900;
+      color: rgba(11,43,42,.9);
+      background: linear-gradient(180deg, rgba(120,199,191,.30), rgba(120,199,191,.10));
+      border: 1px solid rgba(120,199,191,.25);
+    }
+
+    .step h4{
+      margin: 2px 0 4px;
+      font-size: 14px;
+      font-weight: 900;
+      color:#0f172a;
+    }
+    .step p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .metrics{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .metric{
+      border-radius: 16px;
+      padding: 12px;
+      border: 1px solid rgba(226,232,240,.95);
+      background: linear-gradient(180deg, rgba(120,199,191,.10), rgba(255,255,255,.92));
+      box-shadow: 0 10px 18px rgba(15,23,42,.05);
+    }
+    .metric .big{
+      font-weight: 900;
+      font-size: 18px;
+      color:#0b2b2a;
+      margin-bottom: 4px;
+      letter-spacing: .02em;
+    }
+    .metric .sm{
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.4;
+    }
+
+    .footerLine{
+      margin-top: 16px;
+      border-top: 1px solid rgba(229,231,235,.9);
+      padding-top: 14px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .page{border-radius: 18px}
+      .grid{grid-template-columns: 320px 1fr}
+      .name{font-size: 40px}
+    }
+
+    @media (max-width: 820px){
+      body{padding:14px 10px}
+      .grid{grid-template-columns: 1fr}
+      .sidebar{border-right:0;border-bottom: 1px solid rgba(229,231,235,.85)}
+      .headerBar{padding: 26px 18px 20px}
+      .mainInner{padding: 18px}
+      .section{padding-left: 52px}
+      .hookGrid{grid-template-columns: 1fr}
+      .twoCol{grid-template-columns: 1fr}
+      .metrics{grid-template-columns: 1fr}
+    }
+
+    @media print{
+      body{background:#fff; padding:0}
+      .page{box-shadow:none; border-radius:0; border:none}
+      a{text-decoration:none}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <div class="grid">
+      <!-- =======================
+           SIDEBAR
+      ======================== -->
+      <aside class="sidebar">
+        <div class="photoWrap">
+          <div class="photoRing">
+            <img class="photo" alt="Aman Dev profile photo"
+                 src="https://amandev.lovable.app/assets/aman-profile-BOns-bho.jpg" />
+          </div>
+        </div>
+
+        <div class="sideTitle">Aman Dev</div>
+        <div class="sideRole">Creative Strategist • Instagram-First Content Systems</div>
+
+        <section class="sideSection">
+          <h3>Contact</h3>
+          <ul class="contactList">
+            <li class="contactItem">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.15 10.8 19.8 19.8 0 0 1 .08 2.18 2 2 0 0 1 2.06 0h3a2 2 0 0 1 2 1.72c.12.86.3 1.7.54 2.5a2 2 0 0 1-.45 2.11L6.1 7.4a16 16 0 0 0 6.5 6.5l1.07-1.05a2 2 0 0 1 2.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div>
+                <div><a href="tel:+916386421290">+91-6386421290</a></div>
+                <span>WhatsApp ready</span>
+              </div>
+            </li>
+
+            <li class="contactItem">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 21s-6-4.35-6-10a6 6 0 0 1 12 0c0 5.65-6 10-6 10z"/>
+                  <circle cx="12" cy="11" r="2"/>
+                </svg>
+              </div>
+              <div>
+                <div>Lucknow, India</div>
+                <span>Available for partnerships</span>
+              </div>
+            </li>
+
+            <li class="contactItem">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16v16H4z"/>
+                  <path d="M22 6l-10 7L2 6"/>
+                </svg>
+              </div>
+              <div>
+                <div><a href="#" onclick="return false;">amandev@yourmail.com</a></div>
+                <span>Replace with real email</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="sideSection">
+          <h3>Education</h3>
+          <ul class="bullets">
+            <li><b>B.A. English (Honours)</b> <span>• Undergraduate</span></li>
+          </ul>
+          <div class="smallNote">
+            Creative writing + storytelling foundation — applied to Instagram-native scripts, hook psychology, and brand narrative.
+          </div>
+        </section>
+
+        <section class="sideSection">
+          <h3>Core Skills</h3>
+          <div class="tagGrid">
+            <div class="tag">Hook scripting</div>
+            <div class="tag">IG strategy</div>
+            <div class="tag">Shot list</div>
+            <div class="tag">Visual direction</div>
+            <div class="tag">UGC systems</div>
+            <div class="tag">Virality testing</div>
+            <div class="tag">Partnerships</div>
+            <div class="tag">Content funnels</div>
+          </div>
+        </section>
+
+        <section class="sideSection">
+          <h3>Formats</h3>
+          <ul class="bullets">
+            <li><b>Reels</b> <span>• high-retention cuts</span></li>
+            <li><b>UGC</b> <span>• creator-first tone</span></li>
+            <li><b>Editorial</b> <span>• cinematic story flow</span></li>
+          </ul>
+        </section>
+
+        <section class="sideSection">
+          <h3>Languages</h3>
+          <div class="langRow">
+            <div>English</div>
+            <div class="dots" aria-label="English proficiency">
+              <span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span>
+            </div>
+          </div>
+          <div class="langRow">
+            <div>Hindi</div>
+            <div class="dots" aria-label="Hindi proficiency">
+              <span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="sideSection">
+          <h3>Focus</h3>
+          <ul class="bullets">
+            <li><b>Travel platforms</b> <span>• “feel it before you book”</span></li>
+            <li><b>Brand integrations</b> <span>• story-first, not logo-first</span></li>
+            <li><b>Repeatable systems</b> <span>• scale winners, kill losers</span></li>
+          </ul>
+        </section>
+      </aside>
+
+      <!-- =======================
+           MAIN
+      ======================== -->
+      <section class="main">
+        <header class="headerBar">
+          <h1 class="name">Aman<br/>Dev</h1>
+          <div class="headline">Creative Strategist Resume</div>
+        </header>
+
+        <div class="mainInner">
+
+          <!-- 1) Personal Profile -->
+          <div class="section">
+            <div class="rail"></div>
+            <div class="badge">1</div>
+
+            <div class="secHeader">
+              <h2>Personal Profile</h2>
+              <div class="bar"></div>
+            </div>
+
+            <div class="card">
+              <p class="lead">
+                <strong>I don’t post travel.</strong> I design how travel feels online.<br/>
+                From <strong>idea → scripting → virality → brand partnerships</strong> — built like a repeatable system.
+                I build Instagram-native stories that make people feel the trip before they book it.
+              </p>
+
+              <div class="twoCol">
+                <div class="mini">
+                  <div class="k">Formats</div>
+                  <div class="v">Reels • UGC • Editorial</div>
+                </div>
+                <div class="mini">
+                  <div class="k">Outcome</div>
+                  <div class="v">Retention + Shares + Deals</div>
+                </div>
+                <div class="mini">
+                  <div class="k">Style</div>
+                  <div class="v">Cinematic • Clean • Premium</div>
+                </div>
+                <div class="mini">
+                  <div class="k">Approach</div>
+                  <div class="v">Insight → Hook → Visual → Scale</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2) Process -->
+          <div class="section">
+            <div class="rail"></div>
+            <div class="badge">2</div>
+
+            <div class="secHeader">
+              <h2>Process</h2>
+              <div class="bar"></div>
+            </div>
+
+            <div class="card">
+              <p class="lead">
+                <strong>How I turn ideas into viral Instagram campaigns:</strong>
+              </p>
+
+              <ul class="list">
+                <li><b>Insight before content</b><br><span>What makes people stop scrolling?</span></li>
+                <li><b>Hook scripting (first 1.5s)</b><br><span>If it sounds like an ad, it fails.</span></li>
+                <li><b>Instagram-native visuals</b><br><span>Raw &gt; polished. Real &gt; perfect.</span></li>
+                <li><b>Posting + timing strategy</b><br><span>Virality = timing + emotion.</span></li>
+                <li><b>Virality amplification</b><br><span>Scale winners, kill losers.</span></li>
+                <li><b>Brand & partnership integration</b><br><span>Stories with brands, not ads with logos.</span></li>
+              </ul>
+
+              <div class="timeline">
+                <div class="step">
+                  <div class="stepNo">01</div>
+                  <div>
+                    <h4>Insight</h4>
+                    <p>Normal people are tired, not bored.</p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="stepNo">02</div>
+                  <div>
+                    <h4>Hook</h4>
+                    <p>If it doesn’t sound human, it won’t go viral.</p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="stepNo">03</div>
+                  <div>
+                    <h4>Visual Direction</h4>
+                    <p>Raw &gt; polished. Build scenes like a reel, not a brochure.</p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="stepNo">04</div>
+                  <div>
+                    <h4>Posting Strategy</h4>
+                    <p>Timing + emotion = reach.</p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="stepNo">05</div>
+                  <div>
+                    <h4>Scale</h4>
+                    <p>Winning reels → variations → ads.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3) Content Engine -->
+          <div class="section">
+            <div class="rail"></div>
+            <div class="badge">3</div>
+
+            <div class="secHeader">
+              <h2>Content Engine</h2>
+              <div class="bar"></div>
+            </div>
+
+            <div class="card">
+              <p class="lead">
+                <strong>Hooks That Stop The Scroll</strong><br>
+                Reel-native hooks with psychology baked in — built to feel like a creator, not a brand.
+              </p>
+
+              <div class="hookGrid">
+                <!-- Relatable -->
+                <div class="hookBox">
+                  <div class="hookTop">
+                    <div class="pill">Relatable • 4 hooks</div>
+                    <div class="count">01</div>
+                  </div>
+                  <p class="hook">“You don't need luxury. You need a break.”</p>
+                  <p class="why"><b>Why it works:</b> Burnout + relief</p>
+                </div>
+
+                <div class="hookBox">
+                  <div class="hookTop">
+                    <div class="pill">Relatable</div>
+                    <div class="count">02</div>
+                  </div>
+                  <p class="hook">“POV: You promised yourself ‘next month’… again.”</p>
+                  <p class="why"><b>Why it works:</b> Guilt + self-reflection</p>
+                </div>
+
+                <div class="hookBox">
+                  <div class="hookTop">
+                    <div class="pill">Relatable</div>
+                    <div class="count">03</div>
+                  </div>
+                  <p class="hook">“This isn't a vacation. It's recovery.”</p>
+                  <p class="why"><b>Why it works:</b> Reframes travel</p>
+                </div>
+
+                <div class="hookBox">
+                  <div class="hookTop">
+                    <div class="pill">Relatable</div>
+                    <div class="count">04</div>
+                  </div>
+                  <p class="hook">“You're not tired of work. You're tired of the same view.”</p>
+                  <p class="why"><b>Why it works:</b> Screenshot-worthy</p>
+                </div>
+
+                <!-- Discovery -->
+                <div class="hookBox">
+                  <div class="hookTop">
+                    <div class="pill">Discovery • 3 hooks</div>
+                    <div class="count">01</div>
+                  </div>
+                  <p class="hook">“People don't talk about this place enough.”</p>
+                  <p class="why"><b>Why it works:</b> Feels exclusive</p>
+                </div>
+
+                <div class="hookBox">
+                  <div class="hookTop">
+                    <div class="pill">Discovery</div>
+                    <div class="count">02</div>
+                  </div>
+                  <p class="hook">“I almost didn't come here. That would've been a mistake.”</p>
+                  <p class="why"><b>Why it works:</b> Regret reversal</p>
+                </div>
+
+                <div class="hookBox">
+                  <div class="hookTop">
+                    <div class="pill">Discovery</div>
+                    <div class="count">03</div>
+                  </div>
+                  <p class="hook">“This place doesn't look real on camera.”</p>
+                  <p class="why"><b>Why it works:</b> Anti-Instagram authenticity</p>
+                </div>
+
+                <!-- Budget -->
+                <div class="hookBox">
+                  <div class="hookTop">
+                    <div class="pill">Budget • 2 hooks</div>
+                    <div class="count">01</div>
+                  </div>
+                  <p class="hook">“This trip cost less than your weekend plans.”</p>
+                  <p class="why"><b>Why it works:</b> Objection breaker</p>
+                </div>
+
+                <div class="hookBox">
+                  <div class="hookTop">
+                    <div class="pill">Budget</div>
+                    <div class="count">02</div>
+                  </div>
+                  <p class="hook">“Not expensive. Just smart planning.”</p>
+                  <p class="why"><b>Why it works:</b> Removes luxury fear</p>
+                </div>
+
+                <!-- Emotional -->
+                <div class="hookBox">
+                  <div class="hookTop">
+                    <div class="pill">Emotional • 3 hooks</div>
+                    <div class="count">01</div>
+                  </div>
+                  <p class="hook">“Solo, but not lonely.”</p>
+                  <p class="why"><b>Why it works:</b> Identity hook</p>
+                </div>
+
+                <div class="hookBox">
+                  <div class="hookTop">
+                    <div class="pill">Emotional</div>
+                    <div class="count">02</div>
+                  </div>
+                  <p class="hook">“Trips like this change how you think.”</p>
+                  <p class="why"><b>Why it works:</b> Growth-oriented</p>
+                </div>
+
+                <div class="hookBox">
+                  <div class="hookTop">
+                    <div class="pill">Emotional</div>
+                    <div class="count">03</div>
+                  </div>
+                  <p class="hook">“You'll remember this longer than anything you buy.”</p>
+                  <p class="why"><b>Why it works:</b> Consumer mindset flip</p>
+                </div>
+
+                <!-- Triveu-Style -->
+                <div class="hookBox">
+                  <div class="hookTop">
+                    <div class="pill">Triveu-Style • 3 hooks</div>
+                    <div class="count">01</div>
+                  </div>
+                  <p class="hook">“Scroll like Instagram. Feel like you're already there.”</p>
+                  <p class="why"><b>Why it works:</b> Product-native</p>
+                </div>
+
+                <div class="hookBox">
+                  <div class="hookTop">
+                    <div class="pill">Triveu-Style</div>
+                    <div class="count">02</div>
+                  </div>
+                  <p class="hook">“Before you book it, feel it.”</p>
+                  <p class="why"><b>Why it works:</b> Emotional preview</p>
+                </div>
+
+                <div class="hookBox">
+                  <div class="hookTop">
+                    <div class="pill">Triveu-Style</div>
+                    <div class="count">03</div>
+                  </div>
+                  <p class="hook">“This is how travel should feel online.”</p>
+                  <p class="why"><b>Why it works:</b> Future positioning</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4) Experience / Results -->
+          <div class="section">
+            <div class="rail"></div>
+            <div class="badge">4</div>
+
+            <div class="secHeader">
+              <h2>Experience</h2>
+              <div class="bar"></div>
+            </div>
+
+            <div class="card">
+              <p class="lead">
+                Performance + platform-native execution across full-funnel campaigns and Instagram-first systems.
+              </p>
+
+              <div class="metrics">
+                <div class="metric">
+                  <div class="big">₹1,00,000+</div>
+                  <div class="sm">Daily ad spend managed</div>
+                </div>
+                <div class="metric">
+                  <div class="big">Full-funnel</div>
+                  <div class="sm">Leads • Traffic • Conversions</div>
+                </div>
+                <div class="metric">
+                  <div class="big">Instagram-first</div>
+                  <div class="sm">Platform-native funnels</div>
+                </div>
+              </div>
+
+              <ul class="list">
+                <li><b>Scaled multiple brands from zero</b><br><span>Testing winners, building iterations, and pushing reach through systemized output.</span></li>
+                <li><b>Creative strategist approach</b><br><span>Pacing, micro-moments, and emotion-driven story structure.</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 5) Partnerships -->
+          <div class="section">
+            <div class="rail"></div>
+            <div class="badge">5</div>
+
+            <div class="secHeader">
+              <h2>Partnerships</h2>
+              <div class="bar"></div>
+            </div>
+
+            <div class="card">
+              <p class="lead">
+                <strong>Brand Collaborations & Strategic Partnerships</strong><br>
+                Managed brand-integrated campaigns, content-first collaborations (not forced ads),
+                and long-term visibility partnerships.
+              </p>
+
+              <ul class="list">
+                <li><b>Experience aligning brands with emotion & storytelling</b><br><span>I integrate brands into stories — not stories into ads.</span></li>
+                <li><b>Partnership-ready content design</b><br><span>Hook → shot list → edit rhythm → collaboration packaging.</span></li>
+              </ul>
+
+              <div class="footerLine">
+                <div>Call / WhatsApp: <b style="color:#0f172a">+91-6386421290</b></div>
+                <div>Location: <b style="color:#0f172a">Lucknow, India</b></div>
+                <div>© <span id="yr"></span> Aman Dev</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("yr").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
